@@ -1,11 +1,6 @@
-// ===============================
-// DARK MODE
-// ===============================
-
 const darkModeBtn = document.querySelector(".nav-btn");
 const body = document.body;
 
-// Check if dark mode was enabled previously
 if(localStorage.getItem("theme") === "dark"){
     body.classList.add("dark-mode");
     darkModeBtn.innerHTML = "☀️ Light Mode";
@@ -33,10 +28,6 @@ darkModeBtn.addEventListener("click", () => {
 
 });
 
-// ===============================
-// SMOOTH SCROLL
-// ===============================
-
 document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
 
     anchor.addEventListener("click",function(e){
@@ -53,9 +44,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
 
 });
 
-// ===============================
-// CARD ANIMATION
-// ===============================
 
 const cards=document.querySelectorAll(".card");
 
