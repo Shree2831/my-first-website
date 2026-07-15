@@ -91,14 +91,3 @@ else:
     print("\nSong Not Found")
 
 
-Output 
-Playlist:
-Leo -> Vikram -> Master -> None
-
-After Insert:
-Jailer -> Leo -> Vikram -> Master -> None
-
-After Delete:
-Jailer -> Leo -> Master -> None
-
-Song Found
