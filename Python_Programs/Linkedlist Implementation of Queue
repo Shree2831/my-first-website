@@ -1,0 +1,57 @@
+class Node:
+    def __init__(self,data):
+        self.data=data
+        self.next=None
+class Queue:
+    def __init__(self):
+        self.front=None
+        self.rear=None
+    def is_empty(self):
+        return self.front is None
+    def enqueue(self,data):
+        newnode=Node(data)
+        if self.front is None:
+            self.front=self.rear=newnode
+            return
+        self.rear.next=newnode
+        self.rear=newnode
+    def dequeue(self):
+        if self.front is None:
+            return "Queue Is Empty"
+        data=self.front.data
+        self.front=self.front.next
+        if self.front is None:
+            self.rear=None
+        return data
+    def display(self):
+        if self.front is None:
+            print("Queue is empty")
+            return
+        temp=self.front
+        while temp:
+            print(temp.data)
+            temp=temp.next
+
+q=Queue()
+print("1.enqueue")
+print("2.dequeue")
+print("3.Exit")
+
+while True:
+    ch=int(input("Enter your choice"))
+    if ch==1:
+        a=input("Enter data to Enqueue:")
+        print("Queue After Enqued")
+        q.enqueue(a)
+        q.display()
+    
+    elif ch==2:
+        print("Queue After Dequed")
+        q.dequeue()
+        q.display()
+    elif ch==3:
+        print("Exit")
+        break
+
+    else:
+        print("Invalid Choice")
