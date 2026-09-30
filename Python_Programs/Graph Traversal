@@ -1,0 +1,66 @@
+from collections import deque
+
+n = int(input("Enter the number of users: "))
+
+graph = [[] for _ in range(n)]
+
+e = int(input("Enter the number of friendships: "))
+
+for i in range(e):
+    u, v = map(int, input("Enter friendship (user1 user2): ").split())
+
+    
+    graph[u].append(v)
+    graph[v].append(u)
+
+
+print("\nSocial Network:")
+for i in range(n):
+    print(i, "->", graph[i])
+
+
+start = int(input("\nEnter the user to find friends: "))
+
+print("Direct friends of user", start, ":", graph[start])
+
+
+
+def bfs(start):
+    visited = [False] * n
+    queue = deque([start])
+    visited[start] = True
+
+    result = []
+
+    while queue:
+        user = queue.popleft()
+        result.append(user)
+
+        for friend in graph[user]:
+            if not visited[friend]:
+                visited[friend] = True
+                queue.append(friend)
+
+    return result
+
+
+def dfs(start):
+    visited = [False] * n
+    result = []
+
+    def dfs_recursive(user):
+        visited[user] = True
+        result.append(user)
+
+        for friend in graph[user]:
+            if not visited[friend]:
+                dfs_recursive(friend)
+
+    dfs_recursive(start)
+    return result
+
+
+
+print("\nBFS Traversal:", bfs(start))
+print("DFS Traversal:", dfs(start))
+
